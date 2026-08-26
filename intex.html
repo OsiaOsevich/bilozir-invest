@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BILOZIR-INVEST — Інвестиційна платформа</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #172033;
+      background: #f5f7fa;
+      line-height: 1.6;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 25, 49, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .header-container {
+      max-width: 1250px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #d6a93a;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: #d6a93a;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          rgba(5, 25, 50, 0.78),
+          rgba(5, 25, 50, 0.88)
+        ),
+        linear-gradient(135deg, #0b355c, #06182d);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: rgba(214, 169, 58, 0.08);
+      top: -300px;
+      right: -250px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 120px 25px 70px;
+    }
+
+    .hero-label {
+      color: #d6a93a;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      color: #ffffff;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 1;
+      margin-bottom: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 span {
+      color: #d6a93a;
+    }
+
+    .hero h2 {
+      color: #ffffff;
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #cbd7e6;
+      font-size: 17px;
+      max-width: 720px;
+      margin: 0 auto 35px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #d6a93a;
+      color: #101820;
+    }
+
+    .btn-primary:hover {
+      background: #edc65c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .btn-outline:hover {
+      border-color: #d6a93a;
+      color: #d6a93a;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      padding: 90px 25px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title .small {
+      color: #d6a93a;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #102642;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: auto;
+      color: #667085;
+    }
+
+    /* ================= CARDS ================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 32px 25px;
+      border-radius: 10px;
+      border: 1px solid #e4e8ee;
+      transition: 0.3s;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #d6a93a;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 35px rgba(14, 38, 66, 0.1);
+    }
+
+    .card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #edf3f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      color: #102642;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: #b08318;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      background: #ffffff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about h2 {
+      font-size: 40px;
+      color: #102642;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: #667085;
+      margin-bottom: 18px;
+    }
+
+    .about-box {
+      background: #102642;
+      color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    .about-box h3 {
+      color: #d6a93a;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .about-box p {
+      color: #d6dfeb;
+    }
+
+    /* ================= INVESTOR ================= */
+
+    .investor {
+      background: #eef2f6;
+    }
+
+    .investor-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .investor-content h2 {
+      color: #102642;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .investor-content p {
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    /* ================= CONTACTS ================= */
+
+    .contacts {
+      background: #071931;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .contacts .section-title h2 {
+      color: #ffffff;
+    }
+
+    .contacts .section-title p {
+      color: #aebdce;
+    }
+
+    .contact-info {
+      max-width: 750px;
+      margin: auto;
+      font-size: 16px;
+      color: #d4dfeb;
+    }
+
+    .contact-item {
+      margin: 14px 0;
+    }
+
+    .contact-item strong {
+      color: #d6a93a;
+    }
+
+    .contact-item a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: #d6a93a;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #041222;
+      color: #71839a;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 1000px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .header-container {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .hero-content {
+        padding-top: 180px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about h2,
+      .investor-content h2 {
+        font-size: 32px;
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+    <div class="header-container">
+
+      <a href="#home" class="logo">
+        BILOZIR<span>-INVEST</span>
+      </a>
+
+      <nav>
+        <a href="#community">ПРО ГРОМАДУ</a>
+        <a href="#projects">ІНВЕСТИЦІЙНІ ПРОЄКТИ</a>
+        <a href="#land">ВІЛЬНІ ЗЕМЕЛЬНІ ДІЛЯНКИ</a>
+        <a href="#property">ВІЛЬНІ ОБ'ЄКТИ НЕРУХОМОСТІ</a>
+        <a href="#potential">ПОТЕНЦІАЛ ГРОМАДИ</a>
+        <a href="#investor">ДЛЯ ІНВЕСТОРА</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <div class="hero-label">
+          Білозірська територіальна громада
+        </div>
+
+        <h1>
+          BILOZIR<span>-INVEST</span>
+        </h1>
+
+        <h2>
+          Інвестиційна платформа
+          Білозірської об'єднаної територіальної громади
+        </h2>
+
+        <p>
+          Відкрийте можливості для інвестування,
+          розвитку бізнесу та реалізації перспективних
+          проєктів на території громади.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#projects" class="btn btn-primary">
+            ПЕРЕГЛЯНУТИ ПРОЄКТИ
+          </a>
+
+          <a href="#investor" class="btn btn-outline">
+            ДЛЯ ІНВЕСТОРА
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= DIRECTIONS ================= -->
+
+    <section id="projects">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="small">
+            Інвестиційні можливості
+          </div>
+
+          <h2>
+            Відкрийте потенціал громади
+          </h2>
+
+          <p>
+            Основні напрямки та можливості для інвесторів
+            у Білозірській громаді.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <a href="#community" class="card">
+
+            <div class="card-icon">🏛️</div>
+
+            <h3>
+              Про громаду
+            </h3>
+
+            <p>
+              Інформація про Білозірську територіальну
+              громаду, її розвиток та переваги.
+            </p>
+
+            <span class="card-link">
+              Дізнатися більше →
+            </span>
+
+          </a>
+
+
+          <a href="#projects" class="card">
+
+            <div class="card-icon">📊</div>
+
+            <h3>
+              Інвестиційні проєкти
+            </h3>
+
+            <p>
+              Перспективні проєкти та можливості
+              для реалізації інвестицій.
+            </p>
+
+            <span class="card-link">
+              Переглянути →
+            </span>
+
+          </a>
+
+
+          <a href="#land" class="card">
+
+            <div class="card-icon">🌱</div>
+
+            <h3>
+              Вільні земельні ділянки
+            </h3>
+
+            <p>
+              Земельні ресурси громади, доступні
+              для реалізації бізнес-проєктів.
+            </p>
+
+            <span class="card-link">
+              Переглянути →
+            </span>
+
+          </a>
+
+
+          <a href="#property" class="card">
+
+            <div class="card-icon">🏢</div>
+
+            <h3>
+              Вільні об'єкти нерухомості
+            </h3>
+
+            <p>
+              Об'єкти нерухомості, які можуть бути
+              використані для інвестиційних проєктів.
+            </p>
+
+            <span class="card-link">
+              Переглянути →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= COMMUNITY ================= -->
+
+    <section class="about" id="community">
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div>
+
+            <div class="section-title" style="text-align:left; margin-bottom:20px;">
+
+              <div class="small">
+                Білозірська громада
+              </div>
+
+              <h2>
+                Місце для розвитку
+              </h2>
+
+            </div>
+
+            <p>
+              Білозірська територіальна громада
+              відкриває можливості для реалізації
+              інвестиційних та бізнес-проєктів.
+            </p>
+
+            <p>
+              На платформі BILOZIR-INVEST інвестори
+              можуть ознайомитися з доступними ресурсами,
+              земельними ділянками, об'єктами нерухомості
+              та перспективними проєктами громади.
+            </p>
+
+          </div>
+
+
+          <div class="about-box" id="potential">
+
+            <h3>
+              ПОТЕНЦІАЛ ГРОМАДИ
+            </h3>
+
+            <p>
+              Ресурси, інфраструктура та можливості
+              для розвитку бізнесу та залучення інвестицій.
+            </p>
+
+            <br>
+
+            <a href="#investor" class="btn btn-primary">
+              ДЛЯ ІНВЕСТОРА
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= LAND ================= -->
+
+    <section id="land">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="small">
+            Земельні ресурси
+          </div>
+
+          <h2>
+            Вільні земельні ділянки
+          </h2>
+
+          <p>
+            Інформація про земельні ділянки,
+            доступні для потенційних інвесторів.
+          </p>
+
+        </div>
+
+        <div style="text-align:center;">
+          <a href="#" class="btn btn-primary">
+            ПЕРЕГЛЯНУТИ ДІЛЯНКИ
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PROPERTY ================= -->
+
+    <section id="property" class="about">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="small">
+            Нерухомість
+          </div>
+
+          <h2>
+            Вільні об'єкти нерухомості
+          </h2>
+
+          <p>
+            Об'єкти, які можуть бути використані
+            для реалізації інвестиційних проєктів.
+          </p>
+
+        </div>
+
+        <div style="text-align:center;">
+          <a href="#" class="btn btn-primary">
+            ПЕРЕГЛЯНУТИ ОБ'ЄКТИ
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= INVESTOR ================= -->
+
+    <section class="investor" id="investor">
+
+      <div class="container">
+
+        <div class="investor-content">
+
+          <div class="section-title">
+
+            <div class="small">
+              Для інвестора
+            </div>
+
+            <h2>
+              Маєте інвестиційну ідею?
+            </h2>
+
+          </div>
+
+          <p>
+            Ознайомтеся з інвестиційними можливостями
+            Білозірської громади та зв'яжіться з нами
+            для отримання додаткової інформації.
+          </p>
+
+          <a href="#contacts" class="btn btn-primary">
+            ЗВ'ЯЗАТИСЯ З ГРОМАДОЮ
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= CONTACTS ================= -->
+
+    <section class="contacts" id="contacts">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="small">
+            Контакти
+          </div>
+
+          <h2>
+            Білозірська територіальна громада
+          </h2>
+
+          <p>
+            Будемо раді відповісти на ваші питання
+            та пропозиції.
+          </p>
+
+        </div>
+
+
+        <div class="contact-info">
+
+          <div class="contact-item">
+            <strong>Адреса:</strong><br>
+            вул. Незалежності, 168,
+            с. Білозір’я,
+            Черкаський район,
+            Черкаська область, 19635
+          </div>
+
+
+          <div class="contact-item">
+            <strong>Приймальня:</strong><br>
+            (0472) 30-04-00,
+            (0472) 30-02-15
+          </div>
+
+
+          <div class="contact-item">
+            <strong>Питання та пропозиції:</strong><br>
+
+            <a href="mailto:bilozir_rada@ukr.net">
+              bilozir_rada@ukr.net
+            </a>
+            <br>
+
+            <a href="mailto:26323367@mail.gov.ua">
+              26323367@mail.gov.ua
+            </a>
+          </div>
+
+
+          <div class="contact-item">
+            <strong>Web:</strong><br>
+
+            <a href="https://bilozirska-tg.dosvit.org.ua"
+               target="_blank">
+              bilozirska-tg.dosvit.org.ua
+            </a>
+          </div>
+
+
+          <div class="contact-item">
+            <strong>Код ЄДРПОУ:</strong>
+            26323367
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    © 2026 BILOZIR-INVEST |
+    Білозірська територіальна громада
+
+  </footer>
+
+
+</body>
+</html>
