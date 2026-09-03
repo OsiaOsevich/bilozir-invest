@@ -7,472 +7,161 @@
   <title>BILOZIR-INVEST — Інвестиційна платформа</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #172033;
-      background: #f5f7fa;
-      line-height: 1.6;
-    }
-
-    /* ================= HEADER ================= */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(7, 25, 49, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .header-container {
-      max-width: 1250px;
-      margin: auto;
-      padding: 18px 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: #d6a93a;
-    }
-
-    nav {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-    }
-
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      transition: 0.25s;
-    }
-
-    nav a:hover {
-      color: #d6a93a;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          rgba(5, 25, 50, 0.78),
-          rgba(5, 25, 50, 0.88)
-        ),
-        linear-gradient(135deg, #0b355c, #06182d);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: rgba(214, 169, 58, 0.08);
-      top: -300px;
-      right: -250px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      padding: 120px 25px 70px;
-    }
-
-    .hero-label {
-      color: #d6a93a;
-      font-size: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      color: #ffffff;
-      font-size: clamp(48px, 8vw, 92px);
-      line-height: 1;
-      margin-bottom: 25px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .hero h1 span {
-      color: #d6a93a;
-    }
-
-    .hero h2 {
-      color: #ffffff;
-      font-size: clamp(20px, 3vw, 32px);
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: #cbd7e6;
-      font-size: 17px;
-      max-width: 720px;
-      margin: 0 auto 35px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 15px 28px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.3s;
-    }
-
-    .btn-primary {
-      background: #d6a93a;
-      color: #101820;
-    }
-
-    .btn-primary:hover {
-      background: #edc65c;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.5);
-    }
-
-    .btn-outline:hover {
-      border-color: #d6a93a;
-      color: #d6a93a;
-    }
-
-    /* ================= SECTIONS ================= */
-
-    section {
-      padding: 90px 25px;
-    }
-
-    .container {
-      max-width: 1150px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title .small {
-      color: #d6a93a;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      color: #102642;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      max-width: 650px;
-      margin: auto;
-      color: #667085;
-    }
-
-    /* ================= CARDS ================= */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      background: #ffffff;
-      padding: 32px 25px;
-      border-radius: 10px;
-      border: 1px solid #e4e8ee;
-      transition: 0.3s;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background: #d6a93a;
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 15px 35px rgba(14, 38, 66, 0.1);
-    }
-
-    .card:hover::before {
-      transform: scaleY(1);
-    }
-
-    .card-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: #edf3f8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      color: #102642;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: #667085;
-      font-size: 14px;
-    }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 18px;
-      color: #b08318;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    /* ================= ABOUT ================= */
-
-    .about {
-      background: #ffffff;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about h2 {
-      font-size: 40px;
-      color: #102642;
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      color: #667085;
-      margin-bottom: 18px;
-    }
-
-    .about-box {
-      background: #102642;
-      color: #ffffff;
-      padding: 40px;
-      border-radius: 12px;
-    }
-
-    .about-box h3 {
-      color: #d6a93a;
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .about-box p {
-      color: #d6dfeb;
-    }
-
-    /* ================= INVESTOR ================= */
-
-    .investor {
-      background: #eef2f6;
-    }
-
-    .investor-content {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .investor-content h2 {
-      color: #102642;
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-
-    .investor-content p {
-      color: #667085;
-      margin-bottom: 30px;
-    }
-
-    /* ================= CONTACTS ================= */
-
-    .contacts {
-      background: #071931;
-      color: #ffffff;
-      text-align: center;
-    }
-
-    .contacts .section-title h2 {
-      color: #ffffff;
-    }
-
-    .contacts .section-title p {
-      color: #aebdce;
-    }
-
-    .contact-info {
-      max-width: 750px;
-      margin: auto;
-      font-size: 16px;
-      color: #d4dfeb;
-    }
-
-    .contact-item {
-      margin: 14px 0;
-    }
-
-    .contact-item strong {
-      color: #d6a93a;
-    }
-
-    .contact-item a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .contact-item a:hover {
-      color: #d6a93a;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      background: #041222;
-      color: #71839a;
-      text-align: center;
-      padding: 25px;
-      font-size: 13px;
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width: 1000px) {
-      nav {
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 11px;
-      }
-
-      .cards {
+/* ================================
+   ІНВЕСТИЦІЙНІ ПРОЄКТИ
+   ================================ */
+
+.investment-section {
+    padding: 80px 20px;
+    background: #f6f8f7;
+}
+
+.investment-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.investment-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.investment-header h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #17251f;
+}
+
+.investment-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #68756f;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.investment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.investment-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.investment-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.investment-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.investment-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.investment-tag {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 30px;
+    background: #e8f3ed;
+    color: #28704c;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.investment-tag.sponsor {
+    background: #fff3d6;
+    color: #9a6a00;
+}
+
+.investment-card h3 {
+    font-size: 22px;
+    line-height: 1.25;
+    color: #17251f;
+    margin: 0 0 12px;
+}
+
+.investment-description {
+    color: #68756f;
+    line-height: 1.55;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.investment-meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #edf0ee;
+    color: #34453d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.investment-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #1f6b46;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.investment-button:hover {
+    background: #174f35;
+}
+
+/* Планшет */
+@media (max-width: 900px) {
+    .investment-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
     }
 
-    @media (max-width: 700px) {
-
-      .header-container {
-        flex-direction: column;
-        padding: 15px;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        font-size: 11px;
-      }
-
-      .hero-content {
-        padding-top: 180px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero h2 {
-        font-size: 22px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .about h2,
-      .investor-content h2 {
-        font-size: 32px;
-      }
-
-      section {
-        padding: 65px 18px;
-      }
+    .investment-header h2 {
+        font-size: 34px;
     }
+}
+
+/* Телефон */
+@media (max-width: 600px) {
+    .investment-section {
+        padding: 55px 15px;
+    }
+
+    .investment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .investment-header h2 {
+        font-size: 30px;
+    }
+
+    .investment-image {
+        height: 200px;
+    }
+}
   </style>
 </head>
 
